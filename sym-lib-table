@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Sigue_lineas-rescue")(type "KiCad")(uri "${KIPRJMOD}/Sigue_lineas-rescue.kicad_sym")(options "")(descr ""))
+)

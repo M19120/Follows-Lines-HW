@@ -1,0 +1,116 @@
+
+(rules PCB Sigue_lineas
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 987)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.2)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.8)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 500.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 125.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:500_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (padstack "Via[0-1]_1000:700_um"
+    (shape
+      (circle F.Cu 1000.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 1000.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:500_um" "Via[0-1]_800:500_um" default
+  )
+  (via 
+    "Via[0-1]_1000:700_um" "Via[0-1]_1000:700_um" default
+  )
+  (via 
+    "Via[0-1]_800:500_um-kicad_default" "Via[0-1]_800:500_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_1000:700_um-kicad_default" "Via[0-1]_1000:700_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_800:500_um-GND" "Via[0-1]_800:500_um" GND
+  )
+  (via 
+    "Via[0-1]_1000:700_um-GND" "Via[0-1]_1000:700_um" GND
+  )
+  (via_rule
+    default "Via[0-1]_800:500_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:500_um-kicad_default"
+  )
+  (via_rule
+    GND "Via[0-1]_1000:700_um-GND"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    "SERIAL-TX" "Net-(A1-Pad17)" "SERIAL-RX" "Net-(A1-Pad18)" "Net-(A1-Pad3)" "M2-ENCDR-B" "M2-ENCDR-A" "QTR-1"
+    "M1-ENCDR-B" "MOTOR-2A" "M1-ENCDR-A" "IR-LED" "OLED-SDA" "MOTOR-1A" "OLED-SCL" "MOTOR-1B"
+    "QTR-8" "QTR-2" BUTTON "QTR-3" +5V "QTR-4" "Net-(A1-Pad28)" "QTR-5"
+    "MOTOR-2B" "Net-(A1-Pad30)" "QTR-6" "QTR-7" "Net-(BZ1-Pad1)" "Net-(J2-Pad2)" +BATT "-BATT"
+    "MOTOR-EN" "Net-(R2-Pad1)" "Net-(R3-Pad1)" "Net-(SW1-Pad3)" +12V "Net-(SW1-Pad6)" "Net-(U3-Pad1)" "Net-(U3-Pad5)"
+    "Net-(U3-Pad11)" "Net-(U3-Pad7)" "IR_LED"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class GND
+    GND
+    (clearance_class GND)
+    (via_rule GND)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
